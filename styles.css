@@ -1,4 +1,45 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+  font-family:Arial, sans-serif;
+}
+
+header{
+  height:auto;
+}
+
+header h1, h4{
+  text-align:center;
+}
+
+header ul {
+  display:block;
+  text-align:center;
+}
+
+header li{
+  display:inline-block;
+  margin-right:2.5%;
+  border:1px solid black;
+  padding:10px 10px;
+}
+
+#redLine{
+  background:#FF0000;
+}
+
+#brownLine{
+  background:#A52A2A
+}
+
+
+
+
 #map{
+  margin-top:5%;
   height:400px;
-  width:500px;
+  width:50%;
+  margin:0 auto;
 }
