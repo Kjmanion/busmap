@@ -4,9 +4,10 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZWdpdGUiLCJhIjoiN09DU0VUMCJ9.xog8FYRRF4rb
     style: 'mapbox://styles/griegite/cinxa7dta002pb1mavrbqmvm7',
     zoom:11.0,
     minZoom:9,
-    maxZoom:14,
+    maxZoom:16,
       
   });
+
 
 map.setCenter([-76.531485,38.986766])
 
@@ -139,6 +140,7 @@ map.on("load",function(){
            ]
           }
         });
+
   
   map.addSource("redPoints",{
     "type":"geojson",
@@ -172,6 +174,11 @@ map.on("load",function(){
       ]
     }
   });
+  
+  map.addSource("greenLine",{
+    "type":"geojson",
+    "data":"greenline.geojson"
+  })
   
   map.addSource("brownLine",{
     "type":"geojson",
@@ -339,6 +346,20 @@ map.on("load",function(){
   });
   
   map.addLayer({
+  "id":"greenLine",
+  "type":"line",
+  "source":"greenLine",
+  "layout":{
+    "line-join":"round",
+    "line-cap":"round"
+  },
+  "paint":{
+    "line-color":"green",
+    "line-width":3
+  }
+  });
+  
+  map.addLayer({
     "id":"redPoints",
     "type":"symbol",
     "source":"redPoints",
@@ -372,8 +393,30 @@ map.on("load",function(){
   
   
 });
+
+function clearLines(){
+  var mapIds = ["redLine","brownLine","redPoints"];
+  for (var i = 0; i < mapIds.length; i++){
+    map.setLayoutProperty(mapIds[i],"visibility","none")
+  }
+};
+
+function addLines(){
+  var mapIds = ["redLine","brownLine","redPoints"];
+  for (var i = 0; i < mapIds.length; i++){
+    map.setLayoutProperty(mapIds[i],"visibility","visible")
+  }
+}
   
-  
+
+$("#clearMap").on('click',function(){
+  clearLines();
+})
+
+
+$("#addLayer").on('click',function(){
+  addLines();
+})
   
   
   

@@ -6,6 +6,7 @@
   
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
+
 </head>
 <body>
   <header>
@@ -18,11 +19,13 @@
       <li id="goldLine">Gold Line</li>
       <li id="yellowLine"></li>
       <li></li>
-      <li></li>
-      <li></li>
+      <li id="addLayer">Add Lines</li>
+      <li id="clearMap">Clear Line!</li>
     </ul>
   </header>
   <div id="map">
+    <div id='geocoder-containerFrom'></div>
+    <div id="geocoder-containerTo"></div>
     
     
   </div>
@@ -30,6 +33,7 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="script.js"></script>
+  
 </body>  
   
   

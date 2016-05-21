@@ -6,6 +6,11 @@ html {
   font-family:Arial, sans-serif;
 }
 
+body{
+  margin:0 auto;
+  max-width:960px;
+}
+
 header{
   height:auto;
 }
@@ -17,29 +22,45 @@ header h1, h4{
 header ul {
   display:block;
   text-align:center;
+  padding-left:0px;
 }
 
 header li{
   display:inline-block;
-  margin-right:2.5%;
-  border:1px solid black;
+  border-top:1px solid black;
+  border-right:1px solid black;
+  border-bottom:1px solid black;
+  
   padding:10px 10px;
+  margin-right:-5px;
 }
 
 #redLine{
   background:#FF0000;
+  border-left:1px solid black;
 }
 
 #brownLine{
   background:#A52A2A
 }
 
+#geocoder-containerFrom{
+  position:absolute;
+  top:10px;
+  left:10px;
+}
+
+#geocoder-containerTo{
+  position:absolute;
+  top:60px;
+  left:10px;
+}
 
 
 
 #map{
   margin-top:5%;
-  height:400px;
+  height:500px;
   width:50%;
   margin:0 auto;
 }
