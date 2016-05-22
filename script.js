@@ -389,20 +389,38 @@ map.on("load",function(){
     "line-width":3
   }
   });
+  
+  map.addLayer({
+    "id":"brownPoints",
+    "type":"symbol",
+    "source":"brownPoints",
+    "layout":{
+      "icon-image":"{marker-symbol}-15",
+      "text-field":"{title}",
+      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset":[0,-2.5],
+      "text-anchor":"top"
+      
+    },
+    "paint":{
+      
+    }
+  });
 
   
   
 });
 
+
 function clearLines(){
-  var mapIds = ["redLine","brownLine","redPoints"];
+  var mapIds = ["redLine","brownLine","redPoints","greenLine"];
   for (var i = 0; i < mapIds.length; i++){
     map.setLayoutProperty(mapIds[i],"visibility","none")
   }
 };
 
 function addLines(){
-  var mapIds = ["redLine","brownLine","redPoints"];
+  var mapIds = ["redLine","brownLine","redPoints","greenLine"];
   for (var i = 0; i < mapIds.length; i++){
     map.setLayoutProperty(mapIds[i],"visibility","visible")
   }
@@ -417,7 +435,28 @@ $("#clearMap").on('click',function(){
 $("#addLayer").on('click',function(){
   addLines();
 })
-  
+
+function lineOn(colorLine, colorPoint){
+  clearLines();
+  map.setLayoutProperty(colorLine,"visibility","visible");
+  map.setLayoutProperty(colorPoint,"visibility","visible");
+};
+
+$("#redLine").on("click",function(){
+  lineOn("redLine","redPoints");
+})
+
+$("#brownLine").on("click",function(){
+  lineOn("brownLine","brownPoints");
+})
+
+$("greenLine").on("click",function(){
+  lineOn("greenLine","greenPoints")
+})
+
+
+
+
   
   
 

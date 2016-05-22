@@ -1,9 +1,11 @@
 html {
   box-sizing: border-box;
+  background-color:#303C74;
 }
 *, *:before, *:after {
   box-sizing: inherit;
   font-family:Arial, sans-serif;
+  
 }
 
 body{
@@ -42,6 +44,10 @@ header li{
 
 #brownLine{
   background:#A52A2A
+}
+
+#greenLine{
+  background-color:green;
 }
 
 #geocoder-containerFrom{
