@@ -4,7 +4,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZWdpdGUiLCJhIjoiN09DU0VUMCJ9.xog8FYRRF4rb
     style: 'mapbox://styles/griegite/cinxa7dta002pb1mavrbqmvm7',
     zoom:11.0,
     minZoom:9,
-    maxZoom:16,
+    maxZoom:19,
       
   });
 
@@ -142,7 +142,7 @@ map.on("load",function(){
         });
 
   
-  map.addSource("redPoints",{
+  map.addSource("connectors",{
     "type":"geojson",
     "data":{
       "type":"FeatureCollection",
@@ -151,7 +151,7 @@ map.on("load",function(){
           "type": "Feature",
           "properties": {
             "title":"Annapolis Mall",
-            "marker-symbol":"marker"
+            "marker-symbol":"bus"
           },
           "geometry": {
             "type": "Point",
@@ -162,8 +162,8 @@ map.on("load",function(){
         {
           "type": "Feature",
           "properties": {
-            "title":"Eastport",
-            "marker-symbol":"marker"
+            "title":"Eastport Plaza",
+            "marker-symbol":"bus"
           },
           "geometry": {
             "type": "Point",
@@ -175,9 +175,16 @@ map.on("load",function(){
     }
   });
   
+ 
+  
   map.addSource("greenLine",{
     "type":"geojson",
-    "data":"greenline.geojson"
+    "data":"greenLine.geojson"
+  })
+  
+  map.addSource("greenPoints",{
+    "type":"geojson",
+    "data":"greenPoints.geojson"
   })
   
   map.addSource("brownLine",{
@@ -192,7 +199,7 @@ map.on("load",function(){
           "geometry": {
             "type": "LineString",
             "coordinates": [
-              [-76.54392600059509,38.98817884439166],
+              [-76.54416203498839,38.98811004542634],
               [-76.54433101415634,38.98803082229253],
               [-76.54448121786118,38.98792866601539],
               [-76.54467701911926,38.98765138394864],
@@ -306,7 +313,7 @@ map.on("load",function(){
           "type": "Feature",
           "properties": {
             "title":"Annapolis Mall",
-            "marker-symbol":"marker"
+            "marker-symbol":"bus"
           },
           "geometry": {
             "type": "Point",
@@ -318,7 +325,7 @@ map.on("load",function(){
           "type": "Feature",
           "properties": {
             "title":"Eastport",
-            "marker-symbol":"marker"
+            "marker-symbol":"bus"
           },
           "geometry": {
             "type": "Point",
@@ -345,6 +352,24 @@ map.on("load",function(){
   }
   });
   
+   map.addLayer({
+    "id":"connectors",
+    "type":"symbol",
+    "source":"connectors",
+    "layout":{
+      "icon-image":"{marker-symbol}-15",
+      "text-field":"{title}",
+      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset":[0,-2.5],
+      "text-anchor":"top",
+      "text-size":12
+      
+    },
+    "paint":{
+      
+    }
+  });
+  
   map.addLayer({
   "id":"greenLine",
   "type":"line",
@@ -360,21 +385,27 @@ map.on("load",function(){
   });
   
   map.addLayer({
-    "id":"redPoints",
+    "id":"greenPoints",
     "type":"symbol",
-    "source":"redPoints",
+    "source":"greenPoints",
     "layout":{
       "icon-image":"{marker-symbol}-15",
+      "icon-offset":[0,1.5],
       "text-field":"{title}",
       "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset":[0,-2.5],
-      "text-anchor":"top"
+      "text-offset":[0,2],
+      "text-anchor":"top",
+      "text-size":12
       
     },
     "paint":{
       
     }
   });
+  
+  
+  
+ 
   
   map.addLayer({
   "id":"brownLine",
@@ -399,7 +430,8 @@ map.on("load",function(){
       "text-field":"{title}",
       "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
       "text-offset":[0,-2.5],
-      "text-anchor":"top"
+      "text-anchor":"top",
+      "text-size":12
       
     },
     "paint":{
@@ -412,19 +444,33 @@ map.on("load",function(){
 });
 
 
+//Functions for interactivity of the map to select a specific layer
+
 function clearLines(){
-  var mapIds = ["redLine","brownLine","redPoints","greenLine"];
+  var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints"];
   for (var i = 0; i < mapIds.length; i++){
     map.setLayoutProperty(mapIds[i],"visibility","none")
   }
 };
 
 function addLines(){
-  var mapIds = ["redLine","brownLine","redPoints","greenLine"];
+  var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints"];
   for (var i = 0; i < mapIds.length; i++){
     map.setLayoutProperty(mapIds[i],"visibility","visible")
   }
 }
+
+function lineToggle(colorLine, colorPoint){
+  
+  var visibility = map.getLayoutProperty(colorLine, "visibility")
+  if (visibility === "none"){
+    map.setLayoutProperty(colorLine,"visibility","visible");
+    map.setLayoutProperty(colorPoint,"visibility","visible");
+  } else{
+    map.setLayoutProperty(colorLine,"visibility","none");
+    map.setLayoutProperty(colorPoint,"visibility","none");
+  }
+};
   
 
 $("#clearMap").on('click',function(){
@@ -436,28 +482,27 @@ $("#addLayer").on('click',function(){
   addLines();
 })
 
-function lineOn(colorLine, colorPoint){
-  clearLines();
-  map.setLayoutProperty(colorLine,"visibility","visible");
-  map.setLayoutProperty(colorPoint,"visibility","visible");
-};
+
 
 $("#redLine").on("click",function(){
-  lineOn("redLine","redPoints");
+  lineToggle("redLine","connectors");
 })
 
 $("#brownLine").on("click",function(){
-  lineOn("brownLine","brownPoints");
+  lineToggle("brownLine","connectors");
 })
 
-$("greenLine").on("click",function(){
-  lineOn("greenLine","greenPoints")
+$("#greenLine").on("click",function(){
+  lineToggle("greenLine","connectors")
 })
 
 
 
 
-  
-  
+/*  
 
 
+
+
+
+*/ 
