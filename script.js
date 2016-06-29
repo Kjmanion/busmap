@@ -187,6 +187,16 @@ map.on("load",function(){
     "data":"greenPoints.geojson"
   })
   
+  map.addSource("orangeLine",{
+    "type":"geojson",
+    "data":"orangeLine.geojson"
+  })
+  
+  map.addSource("orangePoints",{
+    "type":"geojson",
+    "data":"orangePoints.geojson"
+  })
+  
   map.addSource("brownLine",{
     "type":"geojson",
     "data":{
@@ -402,6 +412,38 @@ map.on("load",function(){
       
     }
   });
+  map.addLayer({
+  "id":"orangeLine",
+  "type":"line",
+  "source":"orangeLine",
+  "layout":{
+    "line-join":"round",
+    "line-cap":"round"
+  },
+  "paint":{
+    "line-color":"orange",
+    "line-width":3
+  }
+  });
+  
+  map.addLayer({
+    "id":"orangePoints",
+    "type":"symbol",
+    "source":"orangePoints",
+    "layout":{
+      "icon-image":"{marker-symbol}-15",
+      "icon-offset":[0,1.5],
+      "text-field":"{title}",
+      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
+      "text-offset":[0,2],
+      "text-anchor":"top",
+      "text-size":12
+      
+    },
+    "paint":{
+      
+    }
+  });
   
   
   
@@ -446,6 +488,20 @@ map.on("load",function(){
 
 //Functions for interactivity of the map to select a specific layer
 
+var todayDate = new Date();
+todayDate = todayDate.getDay();
+console.log(todayDate)
+
+function getToday(today){
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+  $("#availableLines").text("Available lines for today, " + days[today]);
+}
+
+
+
+
+getToday(todayDate);
+
 function clearLines(){
   var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints"];
   for (var i = 0; i < mapIds.length; i++){
@@ -471,6 +527,10 @@ function lineToggle(colorLine, colorPoint){
     map.setLayoutProperty(colorPoint,"visibility","none");
   }
 };
+
+function busStops(colorLine){
+  
+}
   
 
 $("#clearMap").on('click',function(){
@@ -486,6 +546,7 @@ $("#addLayer").on('click',function(){
 
 $("#redLine").on("click",function(){
   lineToggle("redLine","connectors");
+  $(".busStop").text("");
 })
 
 $("#brownLine").on("click",function(){
@@ -493,7 +554,11 @@ $("#brownLine").on("click",function(){
 })
 
 $("#greenLine").on("click",function(){
-  lineToggle("greenLine","connectors")
+  lineToggle("greenLine","greenPoints")
+})
+
+$("#orangeLine").on("click",function(){
+  lineToggle("orangeLine","orangePoints")
 })
 
 

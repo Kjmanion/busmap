@@ -1,0 +1,122 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Church Circle & School St."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.49235248565672,
+          38.97860680649203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "West St. & Calvert St."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.49599492549896,
+          38.97825650915904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "West St. & Lafayette Ave."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.49748623371124,
+          38.977889529141976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "DPW Spa Rd. facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.50986194610596,
+          38.97263483396444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Copeland at Boys & Girls Club"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.5288734436035,
+          38.969210731517705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Annap. Marketplace (Safeway)"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.52381479740143,
+          38.97066630808362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Newtowne Dr. opposite Betsy Ct."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.52196943759918,
+          38.96418480026094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Robinwood Turnaround"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.50975465774536,
+          38.95295545660516
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Hilltop Lane & Boxwood Rd."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.50892853736877,
+          38.964923071426625
+        ]
+      }
+    }
+  ]
+}
