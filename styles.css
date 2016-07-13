@@ -29,7 +29,8 @@ header ul {
   text-align:center;
   padding-left:0px;
   margin-bottom:0;
-  width:100%;
+  width:75%;
+  margin:0 auto;
 }
 
 header li{
@@ -59,41 +60,45 @@ header li{
 /* Bus Stop Lists Styles -------------------------------------------------------------------------------------------------------- */
 
 #content{
-  margin-left:10.5%;
+  
   
 }
 
-aside {
-  float:left;
-  width:15%;
-  
-  
-}
+
 
 
 
 ul#busStops {
   display:block;
-  margin-top:0px;
+  margin-top:4%;
   padding-left:0px;
+}
+
+#content>h3{
+  text-align:center;
 }
 
 ul#busStops>li:first-child {
   border:1px solid black;
+  border-top
 }
 
 .busStop {
   list-style-type:none;
+  margin:0 auto;
   text-align:center;
   padding:8px;
   border:1px solid black;
   border-top:0px;
+  width:50%;
+  font-size:2vh;
 }
 
 
 /* Map Styles ------------------------------------------------------------------------------ */
 #map {
   position:relative;
+  margin:0 auto;
   height:400px;
-  width:73%;
+  width:60%
 }

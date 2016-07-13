@@ -422,7 +422,8 @@ map.on("load",function(){
   },
   "paint":{
     "line-color":"orange",
-    "line-width":3
+    "line-width":3,
+    "line-opacity":0.7
   }
   });
   
@@ -458,7 +459,7 @@ map.on("load",function(){
     "line-cap":"round"
   },
   "paint":{
-    "line-color":"#A52A2A",
+    "line-color":"brown",
     "line-width":3
   }
   });
@@ -518,11 +519,15 @@ function addLines(){
 
 function lineToggle(colorLine, colorPoint){
   
-  var visibility = map.getLayoutProperty(colorLine, "visibility")
-  if (visibility === "none"){
+  var visibilityLine = map.getLayoutProperty(colorLine, "visibility")
+  var visibilityPoint = map.getLayoutProperty(colorPoint, "visibility")
+  if (visibilityLine === "none" && visibilityPoint == "none"){
     map.setLayoutProperty(colorLine,"visibility","visible");
     map.setLayoutProperty(colorPoint,"visibility","visible");
-  } else{
+  } else if(visibilityLine === "none" && visibilityPoint == "visibile"){
+    map.setLayoutProperty(colorLine,"visibility","visibile");
+    
+  }else{
     map.setLayoutProperty(colorLine,"visibility","none");
     map.setLayoutProperty(colorPoint,"visibility","none");
   }
@@ -538,19 +543,13 @@ $("#clearMap").on('click',function(){
 })
 
 
-$("#addLayer").on('click',function(){
-  addLines();
-})
-
-
-
 $("#redLine").on("click",function(){
   lineToggle("redLine","connectors");
   $(".busStop").text("");
 })
 
 $("#brownLine").on("click",function(){
-  lineToggle("brownLine","connectors");
+  lineToggle("brownLine","brownPoints");
 })
 
 $("#greenLine").on("click",function(){
