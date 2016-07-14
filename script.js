@@ -534,8 +534,12 @@ function lineToggle(colorLine, colorPoint){
   }
 };
 
+//Function to list BusStops from GeoJSON on the page itself. H
+
 function busStops(colorPoints, colorLine){
+  $("#busStops").empty();
   var loc = colorPoints + ".geojson"
+  $("#busLine").text(colorLine);
   $.getJSON(loc, function(data){
     $.each(data.features, function(key, val){
       console.log(val.properties.title);
@@ -549,6 +553,7 @@ function busStops(colorPoints, colorLine){
 
 $("#clearMap").on('click',function(){
   clearLines();
+  $("#busStops").empty();
 })
 
 
