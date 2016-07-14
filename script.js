@@ -489,6 +489,7 @@ map.on("load",function(){
 
 //Functions for interactivity of the map to select a specific layer
 
+//Need Day of the Week because some lines don't run every day
 var todayDate = new Date();
 todayDate = todayDate.getDay();
 console.log(todayDate)
@@ -498,10 +499,10 @@ function getToday(today){
   $("#availableLines").text("Available lines for today, " + days[today]);
 }
 
-
-
-
 getToday(todayDate);
+
+
+//Clear All Lines off the map
 
 function clearLines(){
   var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints"];
@@ -533,7 +534,15 @@ function lineToggle(colorLine, colorPoint){
   }
 };
 
-function busStops(colorLine){
+function busStops(colorPoints, colorLine){
+  var loc = colorPoints + ".geojson"
+  $.getJSON(loc, function(data){
+    $.each(data.features, function(key, val){
+      console.log(val.properties.title);
+      $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
+    })
+  })
+  
   
 }
   
@@ -546,6 +555,7 @@ $("#clearMap").on('click',function(){
 $("#redLine").on("click",function(){
   lineToggle("redLine","connectors");
   $(".busStop").text("");
+  
 })
 
 $("#brownLine").on("click",function(){
@@ -553,11 +563,13 @@ $("#brownLine").on("click",function(){
 })
 
 $("#greenLine").on("click",function(){
-  lineToggle("greenLine","greenPoints")
+  lineToggle("greenLine","greenPoints");
+  busStops("greenPoints", "Green Line");
 })
 
 $("#orangeLine").on("click",function(){
-  lineToggle("orangeLine","orangePoints")
+  lineToggle("orangeLine","orangePoints");
+  busStops("orangePoints", "Orange Line");
 })
 
 
