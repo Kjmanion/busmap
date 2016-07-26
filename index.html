@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Online Annapolis Bus Map</title>
-  <link rel="stylesheet" href="styles.css"> 
+  <link rel="stylesheet" href="styles.css">
   <link href='https://fonts.googleapis.com/css?family=PT+Serif' rel='stylesheet' type='text/css'>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.16.0/mapbox-gl.css' rel='stylesheet' />
@@ -13,32 +13,32 @@
     <h1>Annapolis Bus Map</h1>
     <h4 id="availableLines"></h4>
     <ul id="navBar">
-      <li id="redLine" class="route">Red Line</li>
-      <li id="brownLine" class="route">Brown Line</li>
-      <li id="greenLine" class="route">Green Line</li>
-      <li id="goldLine" class="route">Gold Line</li>
-      <li id="yellowLine" class="route">Yellow Line</li>
-      <li id="purpleLineS" class="route">Purple Line South</li>
-      <li id="orangeLine" class="route">Orange Line</li>
-      <li id="purpleLineN" class="route">Purple Line North</li>
-      <li id="clearMap" class="route">Clear Line!</li>
+      <li id="redLine" class="route circle"><p class="cap">Red</p></li>
+      <li id="brownLine" class="route circle"><p class="cap">Brown</p></li>
+      <li id="greenLine" class="route circle"><p class="cap">Green</p></li>
+      <li id="goldLine" class="route circle"><p class="cap">Gold</p></li>
+      <li id="yellowLine" class="route circle"><p class="cap">Yellow</p></li>
+      <li id="purpleLineS" class="route circle"><p class="cap">Purple</p></li>
+      <li id="orangeLine" class="route circle"><p class="cap">Orange</p></li>
+      <li id="purpleLineN" class="route circle"><p class="cap">PurpleN</p></li>
+      <li id="clearMap" class="route circle">Clear Line!</li>
     </ul>
   </header>
   <div id="content">
     <div id="map"></div>
-    <h3 id="busLine">Line</h3> 
+    <h3 id="busLine">Line</h3>
     <ul id="busStops">
-      
+
     </ul>
-    
+
   </div>
-  
-  
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="script.js"></script>
-  
-</body>  
-  
-  
-  
+
+</body>
+
+
+
 </html>

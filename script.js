@@ -3,9 +3,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZWdpdGUiLCJhIjoiN09DU0VUMCJ9.xog8FYRRF4rb
     container: 'map',
     style: 'mapbox://styles/griegite/cinxa7dta002pb1mavrbqmvm7',
     zoom:11.0,
-    minZoom:9,
-    maxZoom:19,
-      
+    minZoom:10,
+    maxZoom:18,
+
   });
 
 
@@ -141,7 +141,7 @@ map.on("load",function(){
           }
         });
 
-  
+
   map.addSource("connectors",{
     "type":"geojson",
     "data":{
@@ -174,29 +174,29 @@ map.on("load",function(){
       ]
     }
   });
-  
- 
-  
+
+
+
   map.addSource("greenLine",{
     "type":"geojson",
     "data":"greenLine.geojson"
   })
-  
+
   map.addSource("greenPoints",{
     "type":"geojson",
     "data":"greenPoints.geojson"
   })
-  
+
   map.addSource("orangeLine",{
     "type":"geojson",
     "data":"orangeLine.geojson"
   })
-  
+
   map.addSource("orangePoints",{
     "type":"geojson",
     "data":"orangePoints.geojson"
   })
-  
+
   map.addSource("brownLine",{
     "type":"geojson",
     "data":{
@@ -312,7 +312,7 @@ map.on("load",function(){
           }
       }]
     }
-    
+
   });
    map.addSource("brownPoints",{
     "type":"geojson",
@@ -346,8 +346,8 @@ map.on("load",function(){
       ]
     }
   });
-  
-  
+
+
   map.addLayer({
   "id":"redLine",
   "type":"line",
@@ -361,7 +361,7 @@ map.on("load",function(){
     "line-width":3
   }
   });
-  
+
    map.addLayer({
     "id":"connectors",
     "type":"symbol",
@@ -373,13 +373,13 @@ map.on("load",function(){
       "text-offset":[0,-2.5],
       "text-anchor":"top",
       "text-size":12
-      
+
     },
     "paint":{
-      
+
     }
   });
-  
+
   map.addLayer({
   "id":"greenLine",
   "type":"line",
@@ -393,7 +393,7 @@ map.on("load",function(){
     "line-width":3
   }
   });
-  
+
   map.addLayer({
     "id":"greenPoints",
     "type":"symbol",
@@ -406,10 +406,10 @@ map.on("load",function(){
       "text-offset":[0,2],
       "text-anchor":"top",
       "text-size":12
-      
+
     },
     "paint":{
-      
+
     }
   });
   map.addLayer({
@@ -426,7 +426,7 @@ map.on("load",function(){
     "line-opacity":0.7
   }
   });
-  
+
   map.addLayer({
     "id":"orangePoints",
     "type":"symbol",
@@ -439,17 +439,17 @@ map.on("load",function(){
       "text-offset":[0,2],
       "text-anchor":"top",
       "text-size":12
-      
+
     },
     "paint":{
-      
+
     }
   });
-  
-  
-  
- 
-  
+
+
+
+
+
   map.addLayer({
   "id":"brownLine",
   "type":"line",
@@ -463,7 +463,7 @@ map.on("load",function(){
     "line-width":3
   }
   });
-  
+
   map.addLayer({
     "id":"brownPoints",
     "type":"symbol",
@@ -475,15 +475,15 @@ map.on("load",function(){
       "text-offset":[0,-2.5],
       "text-anchor":"top",
       "text-size":12
-      
+
     },
     "paint":{
-      
+
     }
   });
 
-  
-  
+
+
 });
 
 
@@ -505,7 +505,7 @@ getToday(todayDate);
 //Clear All Lines off the map
 
 function clearLines(){
-  var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints"];
+  var mapIds = ["redLine","brownLine","connectors","greenLine","brownPoints","orangeLine","orangePoints"];
   for (var i = 0; i < mapIds.length; i++){
     map.setLayoutProperty(mapIds[i],"visibility","none")
   }
@@ -519,7 +519,7 @@ function addLines(){
 }
 
 function lineToggle(colorLine, colorPoint){
-  
+
   var visibilityLine = map.getLayoutProperty(colorLine, "visibility")
   var visibilityPoint = map.getLayoutProperty(colorPoint, "visibility")
   if (visibilityLine === "none" && visibilityPoint == "none"){
@@ -527,7 +527,7 @@ function lineToggle(colorLine, colorPoint){
     map.setLayoutProperty(colorPoint,"visibility","visible");
   } else if(visibilityLine === "none" && visibilityPoint == "visibile"){
     map.setLayoutProperty(colorLine,"visibility","visibile");
-    
+
   }else{
     map.setLayoutProperty(colorLine,"visibility","none");
     map.setLayoutProperty(colorPoint,"visibility","none");
@@ -546,10 +546,10 @@ function busStops(colorPoints, colorLine){
       $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
     })
   })
-  
-  
+
+
 }
-  
+
 
 $("#clearMap").on('click',function(){
   clearLines();
@@ -560,7 +560,7 @@ $("#clearMap").on('click',function(){
 $("#redLine").on("click",function(){
   lineToggle("redLine","connectors");
   $(".busStop").text("");
-  
+
 })
 
 $("#brownLine").on("click",function(){
@@ -580,10 +580,10 @@ $("#orangeLine").on("click",function(){
 
 
 
-/*  
+/*
 
 
 
 
 
-*/ 
+*/

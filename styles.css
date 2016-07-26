@@ -1,12 +1,12 @@
 html {
   box-sizing: border-box;
   background-color:#FCFBE3;
-  
+
 }
 *, *:before, *:after {
   box-sizing: inherit;
   font-family: 'PT Serif', serif;
-  
+
 }
 
 body{
@@ -28,7 +28,7 @@ header ul {
   display:block;
   text-align:center;
   padding-left:0px;
-  margin-bottom:0;
+
   width:75%;
   margin:0 auto;
 }
@@ -38,10 +38,21 @@ header li{
   border-top:1px solid black;
   border-right:1px solid black;
   border-bottom:1px solid black;
-  
+
   padding:10px 10px;
   margin-right:-5px;
 }
+
+.circle{
+  display:inline-block;
+  width:7vh;
+  height:7vh;
+  border:1px solid gray;
+  border-radius:50%;
+  margin-left:2vw;
+  text-align:center;
+}
+
 
 #redLine{
   background:#FF0000;
@@ -56,12 +67,49 @@ header li{
   background-color:green;
 }
 
+#goldLine {
+  background-color:gold;
+}
+
+#yellowLine{
+  background-color:yellow;
+}
+
+#purpleLineS{
+  background-color:purple
+}
+
+#orangeLine {
+  background-color:orange;
+}
+
+#purpleLineN{
+  background-color:white;
+  border:1px solid purple;
+}
+
+#clearMap{
+  border:1px solid black;
+}
+
+.cap{
+  display:inline-block;
+  position:relative;
+  font-size:2.3vh;
+  top:2vw;
+  right:1.2vh;
+  text-align:center;
+
+}
+
 
 /* Bus Stop Lists Styles -------------------------------------------------------------------------------------------------------- */
 
 #content{
-  
-  
+  display:block;
+  position:relative;
+  margin-top:3.5vw;
+
 }
 
 
@@ -101,5 +149,5 @@ ul#busStops>li:first-child {
   position:relative;
   margin:0 auto;
   height:400px;
-  width:60%
+  width:75%
 }
