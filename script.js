@@ -401,17 +401,12 @@ map.on("load",function(){
     "layout":{
       "icon-image":"{marker-symbol}-15",
       "icon-offset":[0,1.5],
-      "text-field":"{title}",
-      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset":[0,2],
-      "text-anchor":"top",
-      "text-size":12
-
     },
     "paint":{
 
     }
   });
+
   map.addLayer({
   "id":"orangeLine",
   "type":"line",
@@ -434,21 +429,12 @@ map.on("load",function(){
     "layout":{
       "icon-image":"{marker-symbol}-15",
       "icon-offset":[0,1.5],
-      "text-field":"{title}",
-      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset":[0,2],
-      "text-anchor":"top",
-      "text-size":12
 
     },
     "paint":{
 
     }
   });
-
-
-
-
 
   map.addLayer({
   "id":"brownLine",
@@ -470,20 +456,11 @@ map.on("load",function(){
     "source":"brownPoints",
     "layout":{
       "icon-image":"{marker-symbol}-15",
-      "text-field":"{title}",
-      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset":[0,-2.5],
-      "text-anchor":"top",
-      "text-size":12
-
     },
     "paint":{
 
     }
   });
-
-
-
 });
 
 
@@ -539,13 +516,11 @@ function lineToggle(colorLine, colorPoint){
 function busStops(colorPoints, colorLine, color){
   $("#busStops").empty();
   var loc = colorPoints + ".geojson"
-  var line = color
-  console.log(line);
   $("#busLine").text(colorLine);
   $.getJSON(loc,function(data){
     $.each(data.features, function(key, val){
       console.log(val.properties.title, val.properties["lines"]);
-      if(val.properties.lines.includes(line)) {
+      if(val.properties.lines.includes(color)) {
         $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
       };
     })
@@ -586,7 +561,13 @@ $("#orangeLine").on("click",function(){
 
 /*
 
+text properties for icons:
 
+"text-field":"{title}",
+"text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
+"text-offset":[0,-2.5],
+"text-anchor":"top",
+"text-size":12
 
 
 

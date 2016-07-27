@@ -89,7 +89,7 @@ header li{
 #content{
   display:block;
   position:relative;
-  margin-top:3.5vw;
+  margin-top:1.5vw;
 
 }
 
@@ -130,5 +130,5 @@ ul#busStops>li:first-child {
   position:relative;
   margin:0 auto;
   height:400px;
-  width:75%
+  width:66.6%
 }
