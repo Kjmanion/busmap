@@ -4,6 +4,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "Church Circle & School St."
       },
       "geometry": {
@@ -17,6 +18,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "West St. & Calvert St."
       },
       "geometry": {
@@ -30,6 +32,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "West St. & Lafayette Ave."
       },
       "geometry": {
@@ -43,6 +46,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "DPW Spa Rd. facility"
       },
       "geometry": {
@@ -56,6 +60,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "Copeland at Boys & Girls Club"
       },
       "geometry": {
@@ -69,6 +74,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "Annap. Marketplace (Safeway)"
       },
       "geometry": {
@@ -82,6 +88,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "Newtowne Dr. opposite Betsy Ct."
       },
       "geometry": {
@@ -95,7 +102,8 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Robinwood Turnaround"
+        "title": "Robinwood Turnaround",
+        "lines":["orange"]
       },
       "geometry": {
         "type": "Point",
@@ -108,6 +116,7 @@
     {
       "type": "Feature",
       "properties": {
+        "lines":["orange"],
         "title": "Hilltop Lane & Boxwood Rd."
       },
       "geometry": {

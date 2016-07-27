@@ -2,7 +2,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZWdpdGUiLCJhIjoiN09DU0VUMCJ9.xog8FYRRF4rb
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/griegite/cinxa7dta002pb1mavrbqmvm7',
-    zoom:11.0,
+    zoom:12.0,
     minZoom:10,
     maxZoom:18,
 
@@ -536,14 +536,18 @@ function lineToggle(colorLine, colorPoint){
 
 //Function to list BusStops from GeoJSON on the page itself. H
 
-function busStops(colorPoints, colorLine){
+function busStops(colorPoints, colorLine, color){
   $("#busStops").empty();
   var loc = colorPoints + ".geojson"
+  var line = color
+  console.log(line);
   $("#busLine").text(colorLine);
-  $.getJSON(loc, function(data){
+  $.getJSON(loc,function(data){
     $.each(data.features, function(key, val){
-      console.log(val.properties.title);
-      $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
+      console.log(val.properties.title, val.properties["lines"]);
+      if(val.properties.lines.includes(line)) {
+        $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
+      };
     })
   })
 
@@ -569,12 +573,12 @@ $("#brownLine").on("click",function(){
 
 $("#greenLine").on("click",function(){
   lineToggle("greenLine","greenPoints");
-  busStops("greenPoints", "Green Line");
+  busStops("greenPoints", "Green Line","green");
 })
 
 $("#orangeLine").on("click",function(){
   lineToggle("orangeLine","orangePoints");
-  busStops("orangePoints", "Orange Line");
+  busStops("orangePoints", "Orange Line", "orange");
 })
 
 
