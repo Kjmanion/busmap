@@ -24,22 +24,41 @@ header h1, h4{
   text-align:center;
 }
 
-header ul {
-  width:75%;
-  margin:0 auto;
+
+
+
+/* Bus Stop Lists Styles -------------------------------------------------------------------------------------------------------- */
+
+#content{
+
 }
 
-header li{
+/* Map Styles ------------------------------------------------------------------------------ */
+#map {
   display:inline-block;
-  text-align:center;
-  margin-left:3.5%;
+
+  height:400px;
+  width:75%
 }
 
 
+ul#navBar {
+  float:left;
+  width:25%;
+  margin-top:0px;
+  height:400px;
 
+}
+
+ul li{
+  display:block;
+  text-align:center;
+
+
+}
 .circle{
-  width:4.8vw;
-  height:4.8vw;
+  width:2.0vw;
+  height:2.0vw;
   border:1px solid gray;
   border-radius:50%;
 }
@@ -83,18 +102,11 @@ header li{
 }
 
 
-
-/* Bus Stop Lists Styles -------------------------------------------------------------------------------------------------------- */
-
-#content{
-  display:block;
-  position:relative;
-  margin-top:1.5vw;
-
 }
 
 
 
+/* Text of Stops ------------------------------------------------------------------------------*/
 
 
 ul#busStops {
@@ -103,7 +115,7 @@ ul#busStops {
   padding-left:0px;
 }
 
-#content>h3{
+.lines>h3{
   margin-bottom:0px;
   text-align:center;
 }
@@ -122,13 +134,4 @@ ul#busStops>li:first-child {
   border-top:0px;
   width:50%;
   font-size:1.2em;
-}
-
-
-/* Map Styles ------------------------------------------------------------------------------ */
-#map {
-  position:relative;
-  margin:0 auto;
-  height:400px;
-  width:66.6%
 }
