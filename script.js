@@ -142,60 +142,38 @@ map.on("load",function(){
         });
 
 
-  map.addSource("connectors",{
-    "type":"geojson",
-    "data":{
-      "type":"FeatureCollection",
-      "features":[
-        {
-          "type": "Feature",
-          "properties": {
-            "title":"Annapolis Mall",
-            "marker-symbol":"bus"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              -76.54416203498839,38.98811004542634],
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "title":"Eastport Plaza",
-            "marker-symbol":"bus"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              -76.48931622505188,38.965031517390486],
-          }
-        },
-      ]
-    }
-  });
-
-
-
   map.addSource("greenLine",{
     "type":"geojson",
     "data":"greenLine.geojson"
   })
 
-  map.addSource("greenPoints",{
+  map.addSource("points",{
     "type":"geojson",
-    "data":"greenPoints.geojson"
+    "data":"stops.geojson"
   })
+
+  map.addLayer({
+    "id":"points",
+    "type":"symbol",
+    "source":"points",
+    "layout":{
+      "icon-image":"{marker-symbol}-15",
+    },
+    "paint":{
+
+    }
+  });
+
+
+
+
 
   map.addSource("orangeLine",{
     "type":"geojson",
     "data":"orangeLine.geojson"
   })
 
-  map.addSource("orangePoints",{
-    "type":"geojson",
-    "data":"orangePoints.geojson"
-  })
+
 
   map.addSource("brownLine",{
     "type":"geojson",
@@ -314,39 +292,6 @@ map.on("load",function(){
     }
 
   });
-   map.addSource("brownPoints",{
-    "type":"geojson",
-    "data":{
-      "type":"FeatureCollection",
-      "features":[
-        {
-          "type": "Feature",
-          "properties": {
-            "title":"Annapolis Mall",
-            "marker-symbol":"bus"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              -76.54416203498839,38.98811004542634],
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "title":"Eastport",
-            "marker-symbol":"bus"
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              -76.48756742477417,38.96656642707542],
-          }
-        },
-      ]
-    }
-  });
-
 
   map.addLayer({
   "id":"redLine",
@@ -360,24 +305,6 @@ map.on("load",function(){
     "line-color":"#FF0000",
     "line-width":3
   }
-  });
-
-   map.addLayer({
-    "id":"connectors",
-    "type":"symbol",
-    "source":"connectors",
-    "layout":{
-      "icon-image":"{marker-symbol}-15",
-      "text-field":"{title}",
-      "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
-      "text-offset":[0,-2.5],
-      "text-anchor":"top",
-      "text-size":12
-
-    },
-    "paint":{
-
-    }
   });
 
   map.addLayer({
@@ -394,18 +321,7 @@ map.on("load",function(){
   }
   });
 
-  map.addLayer({
-    "id":"greenPoints",
-    "type":"symbol",
-    "source":"greenPoints",
-    "layout":{
-      "icon-image":"{marker-symbol}-15",
-      "icon-offset":[0,1.5],
-    },
-    "paint":{
 
-    }
-  });
 
   map.addLayer({
   "id":"orangeLine",
@@ -423,20 +339,6 @@ map.on("load",function(){
   });
 
   map.addLayer({
-    "id":"orangePoints",
-    "type":"symbol",
-    "source":"orangePoints",
-    "layout":{
-      "icon-image":"{marker-symbol}-15",
-      "icon-offset":[0,1.5],
-
-    },
-    "paint":{
-
-    }
-  });
-
-  map.addLayer({
   "id":"brownLine",
   "type":"line",
   "source":"brownLine",
@@ -450,17 +352,7 @@ map.on("load",function(){
   }
   });
 
-  map.addLayer({
-    "id":"brownPoints",
-    "type":"symbol",
-    "source":"brownPoints",
-    "layout":{
-      "icon-image":"{marker-symbol}-15",
-    },
-    "paint":{
 
-    }
-  });
 });
 
 
@@ -511,23 +403,7 @@ function lineToggle(colorLine, colorPoint){
   }
 };
 
-//Function to list BusStops from GeoJSON on the page itself. H
 
-function busStops(colorPoints, colorLine, color){
-  $("#busStops").empty();
-  var loc = colorPoints + ".geojson"
-  $("#busLine").text(colorLine);
-  $.getJSON(loc,function(data){
-    $.each(data.features, function(key, val){
-      console.log(val.properties.title, val.properties["lines"]);
-      if(val.properties.lines.includes(color)) {
-        $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
-      };
-    })
-  })
-
-
-}
 
 
 $("#clearMap").on('click',function(){
@@ -568,6 +444,174 @@ text properties for icons:
 "text-offset":[0,-2.5],
 "text-anchor":"top",
 "text-size":12
+
+
+
+//Function to list BusStops from GeoJSON on the page itself.
+
+function busStops(colorPoints, colorLine, color){
+  $("#busStops").empty();
+  var loc = colorPoints + ".geojson"
+  $("#busLine").text(colorLine);
+  $.getJSON(loc,function(data){
+    $.each(data.features, function(key, val){
+      console.log(val.properties.title, val.properties["lines"]);
+      if(val.properties.lines.includes(color)) {
+        $("#busStops").append("<li class='busStop'>" + val.properties.title + "</li>");
+      };
+    })
+  })
+
+
+}
+
+
+// Green Line Points addTo Map function
+
+map.addSource("greenPoints",{
+  "type":"geojson",
+  "data":"greenPoints.geojson"
+})
+
+map.addLayer({
+  "id":"greenPoints",
+  "type":"symbol",
+  "source":"greenPoints",
+  "layout":{
+    "icon-image":"{marker-symbol}-15",
+    "icon-offset":[0,1.5],
+  },
+  "paint":{
+
+  }
+});
+
+
+// Orange Line Points addTo Map function(s)
+
+map.addSource("orangePoints",{
+  "type":"geojson",
+  "data":"orangePoints.geojson"
+})
+
+map.addLayer({
+  "id":"orangePoints",
+  "type":"symbol",
+  "source":"orangePoints",
+  "layout":{
+    "icon-image":"{marker-symbol}-15",
+    "icon-offset":[0,1.5],
+
+  },
+  "paint":{
+
+  }
+});
+
+
+
+
+
+// BrownLine Points addTo Map function
+map.addSource("brownPoints",{
+ "type":"geojson",
+ "data":{
+   "type":"FeatureCollection",
+   "features":[
+     {
+       "type": "Feature",
+       "properties": {
+         "title":"Annapolis Mall",
+         "marker-symbol":"bus"
+       },
+       "geometry": {
+         "type": "Point",
+         "coordinates": [
+           -76.54416203498839,38.98811004542634],
+       }
+     },
+     {
+       "type": "Feature",
+       "properties": {
+         "title":"Eastport",
+         "marker-symbol":"bus"
+       },
+       "geometry": {
+         "type": "Point",
+         "coordinates": [
+           -76.48756742477417,38.96656642707542],
+       }
+     },
+   ]
+ }
+});
+
+
+map.addLayer({
+  "id":"brownPoints",
+  "type":"symbol",
+  "source":"brownPoints",
+  "layout":{
+    "icon-image":"{marker-symbol}-15",
+  },
+  "paint":{
+
+  }
+});
+
+// Connectors json that would have points that are shared by multiple Lines..
+
+map.addSource("connectors",{
+  "type":"geojson",
+  "data":{
+    "type":"FeatureCollection",
+    "features":[
+      {
+        "type": "Feature",
+        "properties": {
+          "title":"Annapolis Mall",
+          "marker-symbol":"bus"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -76.54416203498839,38.98811004542634],
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title":"Eastport Plaza",
+          "marker-symbol":"bus"
+        },
+        "geometry": {
+          "type": "Point",
+          "coordinates": [
+            -76.48931622505188,38.965031517390486],
+        }
+      },
+    ]
+  }
+});
+
+map.addLayer({
+ "id":"connectors",
+ "type":"symbol",
+ "source":"connectors",
+ "layout":{
+   "icon-image":"{marker-symbol}-15",
+   "text-field":"{title}",
+   "text-font":["Open Sans Semibold", "Arial Unicode MS Bold"],
+   "text-offset":[0,-2.5],
+   "text-anchor":"top",
+   "text-size":12
+
+ },
+ "paint":{
+
+ }
+});
+
 
 
 

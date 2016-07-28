@@ -1,0 +1,82 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Annapolis Mall",
+        "lines": [
+          "Red",
+          "Brown",
+          "Gold",
+          "Yellow",
+          "Purple",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.54415130615234,
+          38.98810170615325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Robinwood Turnaround",
+        "lines": [
+          "Brown",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.50960445404053,
+          38.95312649635807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "West St. at Church Cir.",
+        "lines": [
+          "Green",
+          "PurpleN",
+          "Gold",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.49335563182831,
+          38.97836910491935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "title": "Eastport Shopping Ctr",
+        "lines": [
+          "Red",
+          "Brown",
+          "Green",
+          "PurpleN"
+        ]
+
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -76.48846328258514,
+          38.96603254921793
+        ]
+      }
+    }
+  ]
+}
