@@ -4,7 +4,6 @@
     {
       "type": "Feature",
       "properties": {
-        "title": "Annapolis Mall",
         "lines": [
           "Red",
           "Brown",
@@ -12,7 +11,9 @@
           "Yellow",
           "Purple",
           "Green"
-        ]
+        ],
+        "title": "Annapolis Mall",
+
       },
       "geometry": {
         "type": "Point",
@@ -78,5 +79,6 @@
         ]
       }
     }
+
   ]
 }

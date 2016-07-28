@@ -147,23 +147,10 @@ map.on("load",function(){
     "data":"greenLine.geojson"
   })
 
-  map.addSource("points",{
+  map.addSource("stops",{
     "type":"geojson",
     "data":"stops.geojson"
   })
-
-  map.addLayer({
-    "id":"points",
-    "type":"symbol",
-    "source":"points",
-    "layout":{
-      "icon-image":"{marker-symbol}-15",
-    },
-    "paint":{
-
-    }
-  });
-
 
 
 
@@ -352,6 +339,19 @@ map.on("load",function(){
   }
   });
 
+  map.addLayer({
+    "id":"stops",
+    "type":"symbol",
+    "source":"stops",
+    "layout":{
+      "icon-image":"bus-15",
+      "icon-offset":[0,0.5],
+      "icon-size":2
+    },
+    "paint":{
+    }
+  });
+
 
 });
 
@@ -464,6 +464,7 @@ function busStops(colorPoints, colorLine, color){
 
 
 }
+
 
 
 // Green Line Points addTo Map function
@@ -611,6 +612,10 @@ map.addLayer({
 
  }
 });
+
+
+
+
 
 
 
