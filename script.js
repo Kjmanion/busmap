@@ -356,6 +356,8 @@ map.on("load",function(){
 });
 
 
+
+
 //Functions for interactivity of the map to select a specific layer
 
 //Need Day of the Week because some lines don't run every day
@@ -615,9 +617,34 @@ map.addLayer({
 
 
 
+descriptors
+
+"description":'<strong>Annapolis Mall</strong></br><ul id="lineList"><li class="lineColor"><li></ul>',
 
 
+"description":'<strong>Robinwood Turnaround</strong></br><ul id="lineList"><li class="lineColor"><li></ul>',
 
+"description":'<strong>West St. at Church Cir.</strong></br><ul id="lineList"><li class="lineColor"><li></ul>',
+
+"description":'<strong>Eastport Shopping Center</strong></br><ul id="lineList"><li class="lineColor"><li></ul>'
+
+map.on("click", function(e){
+  var features = map.queryRenderedFeatures(e.point, {layers: ["stops"] });
+
+  if(!features){
+    return;
+  }
+  var feature = features[0];
+  var popup = new mapboxgl.Popup()
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(feature.properties.description)
+    .addTo(map);
+})
+
+map.on("mousemove",function(e){
+  var features = map.queryRenderedFeatures(e.point, {layers: ["stops"]});
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+})
 
 
 */
