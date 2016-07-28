@@ -38,13 +38,13 @@ header h1, h4{
   display:inline-block;
 
   height:400px;
-  width:75%
+  width:85%
 }
 
 
 ul#navBar {
   float:left;
-  width:25%;
+  width:15%;
   margin-top:0px;
   height:400px;
 
@@ -52,15 +52,21 @@ ul#navBar {
 
 ul li{
   display:block;
-  text-align:center;
+  margin-top:10%;
 
 
 }
 .circle{
+  display:inline-block;
+  margin-right:5%;
+  vertical-align: middle;
   width:2.0vw;
   height:2.0vw;
   border:1px solid gray;
   border-radius:50%;
+  text-align:left;
+
+
 }
 
 #redLine>div{
