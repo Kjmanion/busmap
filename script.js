@@ -366,11 +366,7 @@ map.on("click", function(e){
   var colorAr = feature.properties.lines.split(",")
   var lineViewer = "<ul id='stopList'>";
   for(var i = 0; i < colorAr.length;i++){
-    if (colorAr[i] == 'Green'){
-      lineViewer += "<li id='Green'></li>"
-    } else if (colorAr[i] == 'Red'){
-      lineViewer += "<li id='Red'></li>"
-    };
+    lineViewer += "<li id='" + colorAr[i] + "'></li>";
   };
   lineViewer = lineViewer + "</ul>"
   console.log(lineViewer);
