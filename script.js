@@ -356,9 +356,49 @@ map.on("load",function(){
 });
 
 
+map.on("click", function(e){
+  var features = map.queryRenderedFeatures(e.point, {layers: ["stops"] });
+
+  if(!features){
+    return;
+  }
+  var feature = features[0];
+  var colorAr = feature.properties.lines.split(",")
+  var lineViewer = "<ul id='stopList'>";
+  for(var i = 0; i < colorAr.length;i++){
+    if (colorAr[i] == 'Green'){
+      lineViewer += "<li id='Green'></li>"
+    } else if (colorAr[i] == 'Red'){
+      lineViewer += "<li id='Red'></li>"
+    };
+  };
+  lineViewer = lineViewer + "</ul>"
+  console.log(lineViewer);
+  console.log(colorAr);
+  console.log(feature)
+  var popup = new mapboxgl.Popup()
+    .setLngLat(feature.geometry.coordinates)
+    .setHTML(feature.properties.title + "</br>" + lineViewer)
+    .addTo(map);
+})
+
+map.on("mousemove",function(e){
+  var features = map.queryRenderedFeatures(e.point, {layers: ["stops"]});
+  map.getCanvas().style.cursor = (features.length) ? 'pointer' : '';
+})
+
+
+
+
 
 
 //Functions for interactivity of the map to select a specific layer
+
+
+
+
+
+
 
 //Need Day of the Week because some lines don't run every day
 var todayDate = new Date();

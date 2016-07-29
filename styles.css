@@ -141,3 +141,40 @@ ul#busStops>li:first-child {
   width:50%;
   font-size:1.2em;
 }
+
+
+/* Popup Styling Maybe?--------------------------------------------------------------------------- */
+
+ul#stopList{
+
+}
+
+#stopList>li{
+  display:inline-block;
+  width:20px;
+  height:20px;
+}
+
+#Red{
+  background-color:red;
+}
+
+#Orange{
+  background-color:orange;
+}
+
+#Green{
+  background-color:green;
+}
+
+#Yellow{
+  background-color: yellow;
+}
+
+#Gold{
+  background-color: gold;
+}
+
+#Purple{
+  background-color:purple;
+}
