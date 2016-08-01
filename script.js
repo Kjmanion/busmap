@@ -374,7 +374,7 @@ map.on("click", function(e){
   console.log(feature)
   var popup = new mapboxgl.Popup()
     .setLngLat(feature.geometry.coordinates)
-    .setHTML(feature.properties.title + "</br>" + lineViewer)
+    .setHTML("<h3 id='popupTitle'> " + feature.properties.title + "</h3><h4 id='popUp'>This stop serves the following lines:</h4>" + lineViewer)
     .addTo(map);
 })
 
