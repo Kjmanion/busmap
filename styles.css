@@ -54,6 +54,8 @@ ul#navBar {
 ul li{
   display:table-row;;
   margin-top:10%;
+  cursor:pointer;
+  cursor:hand;
 
 
 }
