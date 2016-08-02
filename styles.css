@@ -33,7 +33,7 @@ header h1, h4{
 
 }
 
-/* Map Styles ------------------------------------------------------------------------------ */
+/* Map and List Styles ------------------------------------------------------------------------------ */
 #map {
   display:inline-block;
 
@@ -47,11 +47,12 @@ ul#navBar {
   width:15%;
   margin-top:0px;
   height:400px;
+  display:table;
 
 }
 
 ul li{
-  display:block;
+  display:table-row;;
   margin-top:10%;
 
 
