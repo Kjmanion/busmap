@@ -390,7 +390,9 @@ map.on("mousemove",function(e){
 
 //Functions for interactivity of the map to select a specific layer
 
-
+$(".circle").on("click", function(){
+  $(this).toggleClass("circle-active")
+})
 
 
 
