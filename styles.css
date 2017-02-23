@@ -35,7 +35,7 @@ header h1, h4{
 
 /* Map and List Styles ------------------------------------------------------------------------------ */
 #map {
-  display:inline-block;
+  display:block;
 
   height:400px;
   width:85%
@@ -47,25 +47,43 @@ ul#navBar {
   width:15%;
   margin-top:0px;
   height:400px;
-  display:table;
+}
+
+@media only screen and (max-width: 767px) {
+
+    #map{
+      display:block;
+      height:400px;
+      width:80%;
+    }
+
+    ul#navBar{
+      float:left;
+      padding-left:10px;
+      width:20%;
+      margin-top:0px;
+      height:400px
+    }
+
 
 }
 
 ul li{
-  display:table-row;;
-  margin-top:10%;
+  display:block;
+  margin-top:5%;
+  height:40px;
   cursor:pointer;
   cursor:hand;
-
-
 }
+
+
 .circle{
   display:inline-block;
   margin-right:5%;
   vertical-align: middle;
   width:2.0vw;
   height:2.0vw;
-  border:3px dashed black;
+  border:1px solid black;
   border-radius:50%;
   text-align:left;
 

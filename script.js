@@ -2,9 +2,9 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiZ3JpZWdpdGUiLCJhIjoiN09DU0VUMCJ9.xog8FYRRF4rb
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/griegite/cinxa7dta002pb1mavrbqmvm7',
-    zoom:12.0,
+    zoom:11.25,
     minZoom:10,
-    maxZoom:18,
+    maxZoom:20,
 
   });
 
@@ -147,6 +147,11 @@ map.on("load",function(){
     "data":"greenLine.geojson"
   })
 
+  map.addSource("greenPoints", {
+    "type":"geojson",
+    "data":"greenPoints.geojson"
+  })
+
   map.addSource("stops",{
     "type":"geojson",
     "data":"stops.geojson"
@@ -158,6 +163,11 @@ map.on("load",function(){
   map.addSource("orangeLine",{
     "type":"geojson",
     "data":"orangeLine.geojson"
+  })
+
+  map.addSource("orangePoints",{
+    "type":"geojson",
+    "data":"orangePoints.geojson"
   })
 
 
@@ -308,6 +318,20 @@ map.on("load",function(){
   }
   });
 
+  map.addLayer({
+    "id":"greenPoints",
+    "type":"symbol",
+    "source":"greenPoints",
+    "layout":{
+      "icon-image":"bus-15",
+      "icon-offset":[0,0.5],
+      "icon-size":0.55
+    },
+    "paint":{
+
+    }
+  })
+
 
 
   map.addLayer({
@@ -323,6 +347,20 @@ map.on("load",function(){
     "line-width":3,
     "line-opacity":0.7
   }
+  });
+
+  map.addLayer({
+    "id":"orangePoints",
+    "type":"symbol",
+    "source":"orangePoints",
+    "layout":{
+      "icon-image":"bus-15",
+      "icon-offset":[0,0.5],
+      "icon-size":0.55
+    },
+    "paint":{
+
+    }
   });
 
   map.addLayer({
@@ -346,7 +384,7 @@ map.on("load",function(){
     "layout":{
       "icon-image":"bus-15",
       "icon-offset":[0,0.5],
-      "icon-size":2
+      "icon-size":1.5
     },
     "paint":{
     }
